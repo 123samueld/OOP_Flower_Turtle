@@ -1,4 +1,4 @@
-# OOP Flower Turtle
+# Python Flower Drawer
 
 Using Python Turtle to draw a flower. 
 
