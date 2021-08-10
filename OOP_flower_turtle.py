@@ -4,13 +4,13 @@
 import turtle
 
 class Flower_Drawer():
-    def __init__(self, radius, angel):
+    def __init__(self, radius, angle):
         self.radius = radius
-        self.angle = angel
+        self.angle = angle
+
 
     def get_dimentions_of_a_petal(self):
-        radius = self.radius
-        angle = self.angle
+        return (self.radius, self.angle)
 
     def draw_an_arc(self, name_of_arc, radius, angle):
         arc_length = 2* 3.14159 * radius * (angle/360)
@@ -51,4 +51,5 @@ class Flower_Drawer():
 
 #Daisy = turtle.Turtle()
 #draw_a_flower(Daisy, 300, 50)
-#Flower_Drawer(300, 50)
+flower = Flower_Drawer(300, 50) 
+print(flower.get_dimentions_of_a_petal())
