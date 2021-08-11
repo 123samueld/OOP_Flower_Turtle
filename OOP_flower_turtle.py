@@ -4,52 +4,38 @@
 import turtle
 
 class Flower_Drawer():
-    def __init__(self, radius, angle):
+    def __init__(self, name_of_flower, radius, angle):
+        self.turtle = turtle.Turtle()
+        self.name_of_flower = name_of_flower
         self.radius = radius
         self.angle = angle
 
-
-    def get_dimentions_of_a_petal(self):
-        return (self.radius, self.angle)
-
-    def draw_an_arc(self, name_of_arc, radius, angle):
-        arc_length = 2* 3.14159 * radius * (angle/360)
+    def draw_an_arc(self):
+        arc_length = 2* 3.14159 * self.radius * (self.angle/360)
         n = int(arc_length/3) + 1
         step_length = arc_length/n
-        step_angle = angle/n
+        step_angle = self.angle/n
 
-        name_of_arc.color("Black", "Yellow")
-        name_of_arc.begin_fill()
+        self.turtle.color("Black", "Yellow")
+        self.turtle.begin_fill()
 
         for iterations in range(n):
-            name_of_arc.fd(step_length)
-            name_of_arc.lt(step_angle)
+            self.turtle.fd(step_length)
+            self.turtle.lt(step_angle)
 
-        name_of_arc.end_fill()
-        #turtle.mainloop()
+        self.turtle.end_fill()
 
-    #Half_Petal = turtle.Turtle()
-    #draw_an_arc(Half_Petal, 350, 50)
-
-    def draw_a_petal(name_of_petal, radius, angle):
-        name_of_arc = name_of_petal
+    def draw_a_petal(self):
         for iteration in range(2):
-            draw_an_arc(name_of_arc, radius, angle)
-            name_of_petal.lt(180-angle)
-        #turtle.mainloop() 
+            self.draw_an_arc()
+            self.turtle.lt(180-self.angle)
 
-    #Petal = turtle.Turtle()
-    #draw_a_petal(Petal, 300, 50)
-
-    def draw_a_flower(name_of_flower, radius, angle):
-        name_of_petal = name_of_flower
+    def draw_a_flower(self):
         number_of_petals = 10
         for each_iteration in range(number_of_petals):
-            draw_a_petal(name_of_petal, radius, angle)
-            name_of_flower.lt(360/number_of_petals)
+            self.draw_a_petal()
+            self.turtle.lt(360/number_of_petals)
         turtle.mainloop()
 
-#Daisy = turtle.Turtle()
-#draw_a_flower(Daisy, 300, 50)
-flower = Flower_Drawer(300, 50) 
-print(flower.get_dimentions_of_a_petal())
+Daisy = Flower_Drawer("Daisy", 300, 50)
+print(Daisy.draw_a_flower())
